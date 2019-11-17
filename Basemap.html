@@ -21,18 +21,23 @@
     <div id="map"></div>
     <!-- Add the Leaflet JavaScript library -->
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+    <!-- Add Omnivore Plugin -->
+    <!-- Source for Omnivore plugin: https://github.com/mapbox/leaflet-omnivore-->
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
     
     <script>
     // Create variable to hold map element, give initial settings to map
-    var map = L.map('map',{ center: [46.7837535, -92.0952804], zoom: 14});
-        
-</script>
+    var map = L.map('map',{ center: [46.7837535, -92.0952804], zoom: 14});    
+    </script>
 
     <!-- my own javascript will go here   -->
     <script>
     
     // Add OpenStreetMap tile layer to map element
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+        
+    // Add CSV data from file
+        omnivore.csv('Duluth_POI').addTo(map);
     </script>
     
 </body>
