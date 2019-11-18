@@ -34,7 +34,19 @@
 	maxZoom: 20,
 	attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+     //Create an Empty Popup
+        var popup = L.popup();
+    //Function of Popup
+        function onMapClick(e) {
+            popup
+            .setLatLng(e.latlng)
+            .setContent( "You clicked map at " + e.latlng.toString ())
+            .openOn(map);
+        }
         
+        //Listen for Click Event on the map element
+        map.on('click', onMapClick);
         
 //***** Following code taken from webdev2 assignment*****
 // Create custom airplane marker for airports.csv
