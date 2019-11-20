@@ -19,18 +19,17 @@
 
 /*            Add Header Styling*/
             
-/*            #header {*/
-/*
+           header {
             top: 0;
             width: 100%;
             z-index: 999999;
             position: fixed;
             height: 60px;
-*/
+
 /*            white text*/
-/*            color: lightgray; */
+            color: lightgray;
 /*            purple background*/
-/*
+
             background-color: purple;
             padding-left: 12px;
             overflow: hidden;
@@ -38,7 +37,7 @@
             }
             
             #header * {
-                display: inline-block;
+               display: inline-block;
                 margin-right: 20px;
                 margin-top: 10px;
             }
@@ -53,8 +52,11 @@
 </head>
 <body>
     
-<!--    <header id = "header">-->
-     <h1>Points of Interest While Visiting Duluth!</h1>             
+<header id = "header">
+     <h1>Points of Interest While Visiting Duluth!</h1>
+    <h3 class="right">For more information, please <a href="https://www.visitduluth.com/" target="_blank">Visit Duluth!</a></h3>
+    </header>
+    
     <!-- Our web map and content will go here -->
     <div id="map"></div>
     <!-- Add the Leaflet JavaScript library -->
