@@ -89,7 +89,7 @@
         map.on('click', onMapClick);
         
 //***** Following code taken from webdev2 assignment*****
-// Create custom airplane marker for airports.csv
+// Create custom photo marker marker for duluth_POI.csv
        var myPhotoIcon = L.icon({
             iconUrl:'photo_icon.jpg',
             iconSize:  [40, 40], // size of the icon
@@ -97,37 +97,19 @@
 
 // Create custom layer as template for airports layer
 // Code adapted from https://kristofj-umd.github.io/webdev-f19/assignments/webdev2.html
-       var customLayer = L.geoJson(null, {pointToLayer: function(feature,latlng){return L.marker(latlng,{icon: myPhotoIcon});}});
+// Add popup data from csv file
+//Code adapted from https://stackoverflow.com/questions/52447521/layer-groups-and-control-for-leaflet-omnivore-csv-data-in-javascript
+     var customLayer = L.geoJson(null, {
+       onEachFeature: function(feature,layer)
+       {layer.bindPopup(feature.properties.Attraction){return L.marker(layer,{icon: myPhotoIcon})}
+  }}); 
+
+         // var customLayer = L.geoJson(null, {pointToLayer: function(feature,latlng){return L.marker(latlng,{icon: myPhotoIcon});}});
         
 // Create airports feature from airports csv
         var myPOICsv = omnivore.csv('POI_data/Duluth_POI.csv', null, customLayer).addTo(map);
         
 // Add Popups from CSV file - Code copied from 
-        /*
-         .on('ready', function(layer) {
-        // An example of customizing marker styles based on an attribute.
-        // In this case, the data, a CSV file, has a column called 'state'
-        // with values referring to states. Your data might have different
-        // values, so adjust to fit.
-        this.eachLayer(function(marker) {
-            if (marker.toGeoJSON().properties.state === 'CA') {
-                // The argument to L.mapbox.marker.icon is based on the
-                // simplestyle-spec: see that specification for a full
-                // description of options.
-                marker.setIcon(L.mapbox.marker.icon({
-                    'marker-color': '#ff8888',
-                    'marker-size': 'large'
-                }));
-            } else {
-                marker.setIcon(L.mapbox.marker.icon({}));
-            }
-            // Bind a popup to each icon based on the same properties
-            marker.bindPopup(marker.toGeoJSON().properties.city + ', ' +
-                marker.toGeoJSON().properties.state);
-        });
-    })
-    .addTo(map);
-    */
 
     </script>
     
