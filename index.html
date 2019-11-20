@@ -101,7 +101,7 @@
 //Code adapted from https://stackoverflow.com/questions/52447521/layer-groups-and-control-for-leaflet-omnivore-csv-data-in-javascript
      var customLayer = L.geoJson(null, {
        onEachFeature: function(feature,layer)
-       {layer.bindPopup(feature.properties.Attraction){return L.marker(layer,{icon: myPhotoIcon})}
+       {layer.bindPopup(feature.properties.Attraction)
   }}); 
 
          // var customLayer = L.geoJson(null, {pointToLayer: function(feature,latlng){return L.marker(latlng,{icon: myPhotoIcon});}});
