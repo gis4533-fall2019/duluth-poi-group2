@@ -97,8 +97,15 @@
 
 // Code adapted from https://kristofj-umd.github.io/webdev-f19/assignments/webdev2.html
 // Add popup data from csv file
-       
-var customLayer = L.geoJson(null, {pointToLayer: function(feature,latlng){return L.marker(latlng,{icon: myPhotoIcon});}});
+
+//Code adapted from https://stackoverflow.com/questions/52447521/layer-groups-and-control-for-leaflet-omnivore-csv-data-in-javascript
+     var customLayer = L.geoJson(null, {
+       onEachFeature: function(feature,layer)
+       {layer.bindPopup(feature.properties.Attraction)
+  }}); 
+
+         // var customLayer = L.geoJson(null, {pointToLayer: function(feature,latlng){return L.marker(latlng,{icon: myPhotoIcon});}});
+
         
 
         var myPOICsv = omnivore.csv('POI_data/Duluth_POI.csv', null, customLayer).addTo(map);
