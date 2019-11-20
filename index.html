@@ -89,18 +89,27 @@
         map.on('click', onMapClick);
         
 //***** Following code taken from webdev2 assignment*****
-// Create custom airplane marker for airports.csv
-       var myAirplane = L.icon({
+// Create custom photo marker marker for duluth_POI.csv
+       var myPhotoIcon = L.icon({
             iconUrl:'photo_icon.jpg',
             iconSize:  [40, 40], // size of the icon
         }) 
 
 // Create custom layer as template for airports layer
 // Code adapted from https://kristofj-umd.github.io/webdev-f19/assignments/webdev2.html
-       var customLayer = L.geoJson(null, {pointToLayer: function(feature,latlng){return L.marker(latlng,{icon: myAirplane});}});
+// Add popup data from csv file
+//Code adapted from https://stackoverflow.com/questions/52447521/layer-groups-and-control-for-leaflet-omnivore-csv-data-in-javascript
+     var customLayer = L.geoJson(null, {
+       onEachFeature: function(feature,layer)
+       {layer.bindPopup(feature.properties.Attraction){return L.marker(layer,{icon: myPhotoIcon})}
+  }}); 
+
+         // var customLayer = L.geoJson(null, {pointToLayer: function(feature,latlng){return L.marker(latlng,{icon: myPhotoIcon});}});
         
 // Create airports feature from airports csv
-        var myAirportsCsv = omnivore.csv('POI_data/Duluth_POI.csv', null, customLayer).addTo(map);
+        var myPOICsv = omnivore.csv('POI_data/Duluth_POI.csv', null, customLayer).addTo(map);
+        
+// Add Popups from CSV file - Code copied from 
 
     </script>
     
